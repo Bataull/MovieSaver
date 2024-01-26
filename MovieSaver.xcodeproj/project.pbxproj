@@ -14,6 +14,7 @@
 		112B0BC22B6418DB0085C78B /* MovieSaver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 112B0BC02B6418DB0085C78B /* MovieSaver.xcdatamodeld */; };
 		112B0BC42B6418DC0085C78B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 112B0BC32B6418DC0085C78B /* Assets.xcassets */; };
 		112B0BC72B6418DC0085C78B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 112B0BC52B6418DC0085C78B /* LaunchScreen.storyboard */; };
+		112B0BD72B641CC30085C78B /* FontSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B0BD62B641CC30085C78B /* FontSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,14 @@
 		112B0BC32B6418DC0085C78B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		112B0BC62B6418DC0085C78B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		112B0BC82B6418DC0085C78B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		112B0BCF2B641C820085C78B /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
+		112B0BD02B641C8B0085C78B /* Manrope-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-ExtraBold.ttf"; sourceTree = "<group>"; };
+		112B0BD12B641C940085C78B /* Manrope-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-ExtraLight.ttf"; sourceTree = "<group>"; };
+		112B0BD22B641C940085C78B /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
+		112B0BD32B641C950085C78B /* Manrope-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Light.ttf"; sourceTree = "<group>"; };
+		112B0BD42B641C950085C78B /* Manrope-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Medium.ttf"; sourceTree = "<group>"; };
+		112B0BD52B641C9B0085C78B /* Manrope-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-SemiBold.ttf"; sourceTree = "<group>"; };
+		112B0BD62B641CC30085C78B /* FontSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,7 @@
 		112B0BB62B6418DB0085C78B /* MovieSaver */ = {
 			isa = PBXGroup;
 			children = (
+				112B0BCE2B641C080085C78B /* Font */,
 				112B0BB72B6418DB0085C78B /* AppDelegate.swift */,
 				112B0BB92B6418DB0085C78B /* SceneDelegate.swift */,
 				112B0BBB2B6418DB0085C78B /* ViewController.swift */,
@@ -68,6 +78,21 @@
 				112B0BC02B6418DB0085C78B /* MovieSaver.xcdatamodeld */,
 			);
 			path = MovieSaver;
+			sourceTree = "<group>";
+		};
+		112B0BCE2B641C080085C78B /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				112B0BD52B641C9B0085C78B /* Manrope-SemiBold.ttf */,
+				112B0BCF2B641C820085C78B /* Manrope-Bold.ttf */,
+				112B0BD02B641C8B0085C78B /* Manrope-ExtraBold.ttf */,
+				112B0BD12B641C940085C78B /* Manrope-ExtraLight.ttf */,
+				112B0BD32B641C950085C78B /* Manrope-Light.ttf */,
+				112B0BD42B641C950085C78B /* Manrope-Medium.ttf */,
+				112B0BD22B641C940085C78B /* Manrope-Regular.ttf */,
+				112B0BD62B641CC30085C78B /* FontSettings.swift */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				112B0BD72B641CC30085C78B /* FontSettings.swift in Sources */,
 				112B0BC22B6418DB0085C78B /* MovieSaver.xcdatamodeld in Sources */,
 				112B0BBC2B6418DB0085C78B /* ViewController.swift in Sources */,
 				112B0BB82B6418DB0085C78B /* AppDelegate.swift in Sources */,

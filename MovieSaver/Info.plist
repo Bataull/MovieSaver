@@ -2,6 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Manrope-Bold</key>
+	<string>Manrope-Bold.ttf</string>
+	<key>Manrope-Semibold</key>
+	<string>Manrope-Semibold.ttf</string>
+	<key>Manrope-ExtraBold</key>
+	<string>Manrope-ExtraBold.ttf</string>
+	<key>Manrope-ExtraLight</key>
+	<string>Manrope-ExtraLight.ttf</string>
+	<key>Manrope-Light</key>
+	<string>Manrope-Light.ttf</string>
+	<key>Manrope-Medium</key>
+	<string>Manrope-Medium.ttf</string>
+	<key>Manrope-Regular</key>
+	<string>Manrope-Regular.ttf</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

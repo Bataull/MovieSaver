@@ -1,5 +1,7 @@
 import UIKit
 
+//MARK: - Protocol
+
 protocol TrailerLinkModel: AnyObject {
     
     func setNavigationController(_ navigationController: UINavigationController?)
@@ -7,6 +9,8 @@ protocol TrailerLinkModel: AnyObject {
     
     var delegate: LinkDelegate? { get set }
 }
+
+//MARK: - Default
 
 final class DefaultTrailerLinkModel: TrailerLinkModel {
     

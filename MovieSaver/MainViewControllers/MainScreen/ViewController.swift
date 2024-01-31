@@ -3,11 +3,15 @@ import UIKit
 
 final class ViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
+    //MARK: - Properties
+    
     private let mainTableView = UITableView()
     private var moviesInfo: [Movie] = []
     private var fetchResultController: NSFetchedResultsController<Movie>!
     
     var viewModel: ViewModel!
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,8 @@ final class ViewController: UIViewController, NSFetchedResultsControllerDelegate
             viewModel.setNavigationController(self.navigationController)
         }
     }
+    
+    //MARK: - CoreData
     
     private func coreDataSetups() {
         let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
@@ -50,9 +56,13 @@ final class ViewController: UIViewController, NSFetchedResultsControllerDelegate
         }
     }
     
+    //MARK: - AddSubviews
+    
     private func addSubViews() {
         view.addSubview(mainTableView)
     }
+    
+    //MARK: - Constraints
     
     private func addConstraints() {
         mainTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +72,8 @@ final class ViewController: UIViewController, NSFetchedResultsControllerDelegate
         mainTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
+    //MARK: - Setups
+    
     private func addSetups() {
         addSetupsTableView()
     }
@@ -70,11 +82,12 @@ final class ViewController: UIViewController, NSFetchedResultsControllerDelegate
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.separatorStyle = .none
-        mainTableView.backgroundColor = .white
+        mainTableView.backgroundColor = UIColor(named: "bgColor")
     }
     
     private func addNavigationControllerUI() {
         title = "My Movie List"
+        navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add, target: self,
@@ -82,13 +95,17 @@ final class ViewController: UIViewController, NSFetchedResultsControllerDelegate
         )
     }
     
+    //MARK: - Action
+    
     @objc private func addNewButtonClick() {
         viewModel.addNewButtonClick()
     }
     
+    //MARK: - RatingEditor
+    
     private func ratingMovieInfo(_ indexPath: IndexPath) -> NSMutableAttributedString {
         let firstAttributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.foregroundColor: UIColor(named: "black_white") ?? "",
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .bold)
         ]
         let secondAttributes = [
@@ -108,6 +125,8 @@ final class ViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     
 }
+
+//MARK: - TableViewExtensions
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     

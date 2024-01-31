@@ -3,9 +3,13 @@ import WebKit
 
 final class DetailScreenViewController: UIViewController {
     
+    //MARK: - Properties
+    
     static let identifier = "DetailScreenViewController"
     
-    var movieInfo: Movie = .init()
+    public var movieInfo: Movie = .init()
+    
+    var viewModel: DetailScreenModel?
     
     private let scrollView = UIScrollView()
     private let viewHelperInScroll = UIView()
@@ -16,12 +20,17 @@ final class DetailScreenViewController: UIViewController {
     private let descTextView = UITextView()
     private let linkWebView = WKWebView()
     
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubview()
         addConstraints()
         addSetup()
+        addMovieInfo()
     }
+    
+    //MARK: - AddSubviews
     
     private func addSubview(){
         view.addSubview(movieImage)
@@ -33,6 +42,8 @@ final class DetailScreenViewController: UIViewController {
         viewHelperInScroll.addSubview(descTextView)
         viewHelperInScroll.addSubview(linkWebView)
     }
+    
+    //MARK: - Constraints
     
     private func addConstraints(){
         
@@ -95,34 +106,40 @@ final class DetailScreenViewController: UIViewController {
         linkWebView.bottomAnchor.constraint(equalTo: viewHelperInScroll.bottomAnchor, constant: -30).isActive = true
     }
     
+    //MARK: - Setups
+    
     private func addSetup() {
         //movieImage
         movieImage.contentMode = .scaleAspectFill
         
         //mainView
         mainView.layer.cornerRadius = 16
-        mainView.backgroundColor = .white
+        mainView.backgroundColor = UIColor(named: "white_black")
         
         //nameMovieLabel
-        nameMovieLabel.textColor = .black
+        nameMovieLabel.textColor = UIColor(named: "black_white")
         nameMovieLabel.font = .manrope(24, .bold)
         nameMovieLabel.numberOfLines = 2
         
         //ratingAndYearLabel
-        ratingAndYearLabel.textColor = .black
+        ratingAndYearLabel.textColor = UIColor(named: "black_white")
         
         //descTextView
-        descTextView.textColor = .black
+        descTextView.textColor = UIColor(named: "black_white")
         descTextView.font = .manrope(15, .regular)
     }
+    
+    //MARK: - CoreData Info
     
     private func addMovieInfo() {
         movieImage.image = (UIImage(data: movieInfo.image!))!
         nameMovieLabel.text = movieInfo.name
         descTextView.text = movieInfo.desc
-        linkWebView.load(URLRequest(url: movieInfo.trailerLink!))
         addRatingAndYearLabelInfo()
+        linkWebView.load(URLRequest(url: movieInfo.trailerLink!))
     }
+    
+    //MARK: - RatingEditor
     
     private func addRatingAndYearLabelInfo() {
         let attachment = NSTextAttachment()
@@ -130,11 +147,11 @@ final class DetailScreenViewController: UIViewController {
         let attachmentString = NSMutableAttributedString(attachment: attachment)
         
         let firstAttributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.foregroundColor: UIColor(named: "black_white") ?? "",
             NSAttributedString.Key.font: UIFont.manrope(14, .bold)
         ]
         let secondAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.foregroundColor: UIColor(named: "black_white"),
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .light)
         ]
         let thirdAttributes = [
@@ -143,7 +160,7 @@ final class DetailScreenViewController: UIViewController {
         ]
 
         let firstString = NSMutableAttributedString(string: "  \(movieInfo.rating!)", attributes: firstAttributes)
-        let secondString = NSAttributedString(string: "/10", attributes: secondAttributes)
+        let secondString = NSAttributedString(string: "/10", attributes: secondAttributes as [NSAttributedString.Key : Any])
         let thirdString = NSAttributedString(string: " \(movieInfo.releaseDate!)", attributes: thirdAttributes)
         attachmentString.append(firstString)
         attachmentString.append(secondString)

@@ -2,6 +2,8 @@ import UIKit
 
 final class RatingViewController: UIViewController {
     
+    //MARK: - Properties
+    
     static let identifier = "RatingViewController"
     
     private let ratingLabel = UILabel()
@@ -13,6 +15,8 @@ final class RatingViewController: UIViewController {
     var viewModel: RatingViewModel!
     
     weak var delegate: RatingDelegate?
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +30,15 @@ final class RatingViewController: UIViewController {
         }
     }
     
+    //MARK: - AddSubviews
+    
     private func addSubview(){
         view.addSubview(ratingLabel)
         view.addSubview(pickerView)
         view.addSubview(saveButton)
     }
+    
+    //MARK: - Constraints
     
     private func addConstraints(){
         
@@ -56,17 +64,19 @@ final class RatingViewController: UIViewController {
 
     }
     
+    //MARK: - Setups
+    
     private func addSetups() {
         
         //ratingLabel
         ratingLabel.text = "Your Rating"
-        ratingLabel.textColor = .black
+        ratingLabel.textColor = UIColor(named: "black_white")
         ratingLabel.textAlignment = .center
         ratingLabel.font = .manrope(24, .medium)
         
         //saveButton
         saveButton.setTitle("Save", for: .normal)
-        saveButton.backgroundColor = .white
+        saveButton.backgroundColor = UIColor(named: "white_black")
         saveButton.setTitleColor(.systemBlue, for: .normal)
         saveButton.titleLabel?.font = .manrope(18, .medium)
         saveButton.addTarget(self, action: #selector(saveButtonTap), for: .touchUpInside)
@@ -77,11 +87,15 @@ final class RatingViewController: UIViewController {
         arrayOfRatings = arrayLimits()
     }
     
+    //MARK: - Action
+    
     @objc private func saveButtonTap() {
         viewModel.saveButtonTap(selectedRating: selectedRating)
         delegate?.ratingDelegate(selectedRating ?? "")
     }
 }
+
+   //MARK: - PickerExtensions
 
 extension RatingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     

@@ -27,7 +27,7 @@
         <!--Detail Screen View Controller-->
         <scene sceneID="d8q-2N-pEu">
             <objects>
-                <viewController storyboardIdentifier="DetailScreenViewController" id="fJq-Jj-lNY" customClass="DetailScreenViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailScreenViewController" id="fJq-Jj-lNY" customClass="DetailScreenViewController" customModule="MovieSaver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hql-2b-hHR">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

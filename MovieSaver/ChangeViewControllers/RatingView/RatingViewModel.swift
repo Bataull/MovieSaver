@@ -1,11 +1,15 @@
 import UIKit
 
+//MARK: - Protocol
+
 protocol RatingViewModel: AnyObject {
     
     func setNavigationController(_ navigationController: UINavigationController?)
     func saveButtonTap(selectedRating: String?)
     var delegate: RatingDelegate? { get set }
 }
+
+//MARK: - Default
 
 final class DefaultRatingViewModel: RatingViewModel {
     

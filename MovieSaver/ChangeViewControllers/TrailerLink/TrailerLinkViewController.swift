@@ -2,6 +2,8 @@ import UIKit
 
 final class TrailerLinkViewController: UIViewController {
     
+    //MARK: - Properties
+    
     static let identifier = "TrailerLinkViewController"
     
     private let linkLabel = UILabel()
@@ -11,6 +13,8 @@ final class TrailerLinkViewController: UIViewController {
     var viewModel: TrailerLinkModel!
     
     weak var delegate: LinkDelegate?
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +28,15 @@ final class TrailerLinkViewController: UIViewController {
         }
     }
     
+    //MARK: - AddSubviews
+    
     private func addSubviews(){
         view.addSubview(linkLabel)
         view.addSubview(linkTextField)
         view.addSubview(saveButton)
     }
+    
+    //MARK: - Constraints
     
     private func addConstraints(){
         
@@ -55,11 +63,13 @@ final class TrailerLinkViewController: UIViewController {
         
     }
     
+    //MARK: - Setups
+    
     private func addSetups(){
         
         //linkLabel
         linkLabel.text = "YouTube Link"
-        linkLabel.textColor = .black
+        linkLabel.textColor = UIColor(named: "black_white")
         linkLabel.textAlignment = .center
         linkLabel.font = .manrope(24, .medium)
         
@@ -70,11 +80,13 @@ final class TrailerLinkViewController: UIViewController {
         
         //saveButton
         saveButton.setTitle("Save", for: .normal)
-        saveButton.backgroundColor = .white
+        saveButton.backgroundColor = UIColor(named: "white_black")
         saveButton.setTitleColor(.systemBlue, for: .normal)
         saveButton.titleLabel?.font = .manrope(18, .medium)
         saveButton.addTarget(self, action: #selector(saveButtonTap), for: .touchUpInside)
     }
+    
+    //MARK: - Actions
     
     @objc private func saveButtonTap(){
         if let urlString = linkTextField.text, let url = URL(string: urlString){
@@ -84,6 +96,7 @@ final class TrailerLinkViewController: UIViewController {
     }
 }
 
+    //MARK: - Extensions
 extension TrailerLinkViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)

@@ -1,5 +1,7 @@
 import UIKit
 
+//MARK: - Protocol
+
 protocol AddMovieModel: AnyObject {
     func setNavigationController(_ navigationController: UINavigationController?)
     func movieImageTapped()
@@ -7,7 +9,6 @@ protocol AddMovieModel: AnyObject {
     func ratingButtonTapped()
     func dateButtonTapped()
     func linkButtonTapped()
-    func saveButtonTapped()
     func setNameDelegate(_ nameDelegate: NameDelegate?)
     func setRatingDelegate(_ ratingDelegate: RatingDelegate?)
     func setDateDelegate(_ date: DateDelegate?)
@@ -15,7 +16,10 @@ protocol AddMovieModel: AnyObject {
     
 }
 
+//MARK: - Default
+
 final class DefaultAddMovieModel: NSObject, AddMovieModel, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
     
     private var navigationController: UINavigationController?
     private var presentingViewController: UIViewController?
@@ -52,6 +56,8 @@ final class DefaultAddMovieModel: NSObject, AddMovieModel, UIImagePickerControll
         self.linkDelegate = url
     }
     
+    //MARK: - ChangeButtons
+    
     func nameButtonTapped() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let nameVC = storyboard.instantiateViewController(withIdentifier: FilmNameViewController.identifier) as? FilmNameViewController {
@@ -83,6 +89,8 @@ final class DefaultAddMovieModel: NSObject, AddMovieModel, UIImagePickerControll
             navigationController?.pushViewController(linkVC, animated: true)
         }
     }
+    
+    //MARK: - Camera Setups
     
     func movieImageTapped() {
         let alert = UIAlertController(title: nil , message: nil, preferredStyle: .actionSheet)
@@ -148,9 +156,5 @@ final class DefaultAddMovieModel: NSObject, AddMovieModel, UIImagePickerControll
         if let addMovieViewController = presentingViewController as? AddMovieViewController {
             addMovieViewController.updateMovieImage(pickedImage)
         }
-    }
-    
-    func saveButtonTapped() {
-        
     }
 }

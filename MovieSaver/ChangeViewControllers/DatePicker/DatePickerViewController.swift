@@ -2,6 +2,8 @@ import UIKit
 
 final class DatePickerViewController: UIViewController {
     
+    //MARK: - Properties
+    
     static let identifier = "DatePickerViewController"
     
     private let releaseDateLabel = UILabel()
@@ -11,6 +13,8 @@ final class DatePickerViewController: UIViewController {
     var viewModel: DatePickerModel!
     
     weak var delegate: DateDelegate?
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +28,15 @@ final class DatePickerViewController: UIViewController {
         }
     }
     
+    //MARK: - AddSubviews
+    
     private func addSubview(){
         view.addSubview(releaseDateLabel)
         view.addSubview(datePicker)
         view.addSubview(saveButton)
     }
+    
+    //MARK: - Constraints
     
     private func addConstraints(){
         
@@ -54,11 +62,13 @@ final class DatePickerViewController: UIViewController {
         saveButton.widthAnchor.constraint(equalToConstant: 79).isActive = true
     }
     
+    //MARK: - Setups
+    
     private func addSetups(){
         
         //releaseDateLabel
         releaseDateLabel.text = "Release Date"
-        releaseDateLabel.textColor = .black
+        releaseDateLabel.textColor = UIColor(named: "black_white")
         releaseDateLabel.textAlignment  = .center
         releaseDateLabel.font = .manrope(24, .medium)
         
@@ -68,11 +78,13 @@ final class DatePickerViewController: UIViewController {
         
         //saveButton
         saveButton.setTitle("Save", for: .normal)
-        saveButton.backgroundColor = .white
+        saveButton.backgroundColor = UIColor(named: "white_black")
         saveButton.setTitleColor(.systemBlue, for: .normal)
         saveButton.titleLabel?.font = .manrope(18, .medium)
         saveButton.addTarget(self, action: #selector(saveButtonTap), for: .touchUpInside)
     }
+    
+    //MARK: - Actions
     
     @objc private func saveButtonTap() {
         viewModel.saveButtonTap()

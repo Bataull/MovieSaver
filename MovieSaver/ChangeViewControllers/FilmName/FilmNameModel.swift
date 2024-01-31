@@ -1,11 +1,15 @@
 import UIKit
 
+//MARK: - Protocol
+
 protocol FilmNameModel: AnyObject {
     
     func setNavigationController(_ navigationController: UINavigationController?)
     func saveButtonTap(withName name: String)
     var delegate: NameDelegate? { get set }
 }
+
+//MARK: - Default
 
 final class DefaultFilmNameModel: FilmNameModel {
     

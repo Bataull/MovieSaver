@@ -3,6 +3,8 @@ import UIKit
 
 class AddMovieViewController: UIViewController, NameDelegate, RatingDelegate, DateDelegate, LinkDelegate {
     
+    //MARK: - Properties
+    
     static let identifier = "AddMovieViewController"
     
     var viewModel: AddMovieModel!
@@ -39,6 +41,8 @@ class AddMovieViewController: UIViewController, NameDelegate, RatingDelegate, Da
     private let descLabel = UILabel()
     private let descTextView = UITextView()
     
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
@@ -62,6 +66,8 @@ class AddMovieViewController: UIViewController, NameDelegate, RatingDelegate, Da
         movieImageView.clipsToBounds = true
     }
     
+    //MARK: - CoreData Saver
+    
     private func saveMovie(_ name: String, _ rating: String, _ releaseDate: String, _ description: String, _ trailerLink: String, _ image: UIImage) {
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             movieInfo = Movie(context: appDelegate.persistentContainer.viewContext)
@@ -75,6 +81,8 @@ class AddMovieViewController: UIViewController, NameDelegate, RatingDelegate, Da
             checkDataSaved()
         }
     }
+    
+    //MARK: - AddSubviews
     
     private func addSubviews(){
         view.addSubview(scrollView)
@@ -113,6 +121,8 @@ class AddMovieViewController: UIViewController, NameDelegate, RatingDelegate, Da
         sixStackView.addArrangedSubview(changeDateButton)
         sixStackView.addArrangedSubview(changeLinkButton)
     }
+    
+    //MARK: - Constraints
     
     private func addConstraints(){
         scrollView.frame = view.bounds
@@ -162,6 +172,8 @@ class AddMovieViewController: UIViewController, NameDelegate, RatingDelegate, Da
         descTextView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -20).isActive = true
     }
     
+    //MARK: - Setups
+    
     private func addSetups(){
         //movieImageView
         movieImageView.image = UIImage(named: "ImageSample")
@@ -171,7 +183,7 @@ class AddMovieViewController: UIViewController, NameDelegate, RatingDelegate, Da
         movieImageView.contentMode = .scaleAspectFill
         
         //infoView
-        infoView.backgroundColor = .white
+        infoView.backgroundColor = UIColor(named: "white_black")
         infoView.layer.cornerRadius = 10
         
         //infoMovieStackView
@@ -216,83 +228,83 @@ class AddMovieViewController: UIViewController, NameDelegate, RatingDelegate, Da
         
         //nameLabel
         nameLabel.text = "Name"
-        nameLabel.textColor = .black
+        nameLabel.textColor = UIColor(named: "black_white")
         nameLabel.font = .manrope(18, .medium)
         nameLabel.textAlignment = .center
         
         //ratingLabel
         ratingLabel.text = "Your Rating"
-        ratingLabel.textColor = .black
+        ratingLabel.textColor = UIColor(named: "black_white")
         ratingLabel.font = .manrope(18, .medium)
         ratingLabel.textAlignment = .center
         
         //mainNameLabel
         mainNameLabel.text = "-"
-        mainNameLabel.textColor = .black
+        mainNameLabel.textColor = UIColor(named: "black_white")
         mainNameLabel.font = .manrope(18, .medium)
         mainNameLabel.textAlignment = .center
         
         //mainRaitingLabel
         mainRatingLabel.text = "-"
-        mainRatingLabel.textColor = .black
+        mainRatingLabel.textColor = UIColor(named: "black_white")
         mainRatingLabel.font = .manrope(18, .medium)
         mainRatingLabel.textAlignment = .center
         
         //changeNameBtton
         changeNameButton.setTitle("Change", for: .normal)
-        changeNameButton.backgroundColor = .white
+        changeNameButton.backgroundColor = UIColor(named: "white_black")
         changeNameButton.setTitleColor(.systemBlue, for: .normal)
         changeNameButton.titleLabel?.font = .manrope(18, .medium)
         changeNameButton.addTarget(self, action: #selector(nameButtonTapped), for: .touchUpInside)
         
         //changeRatingButton
         changeRatingButton.setTitle("Change", for: .normal)
-        changeRatingButton.backgroundColor = .white
+        changeRatingButton.backgroundColor = UIColor(named: "white_black")
         changeRatingButton.setTitleColor(.systemBlue, for: .normal)
         changeRatingButton.titleLabel?.font = .manrope(18, .medium)
         changeRatingButton.addTarget(self, action: #selector(ratingButtonTapped), for: .touchUpInside)
         
         //dateLabel
         dateLabel.text = "Release Date"
-        dateLabel.textColor = .black
+        dateLabel.textColor = UIColor(named: "black_white")
         dateLabel.font = .manrope(18, .medium)
         dateLabel.textAlignment = .center
         
         //linkLabel
         linkLabel.text = "YouTube Link"
-        linkLabel.textColor = .black
+        linkLabel.textColor = UIColor(named: "black_white")
         linkLabel.font = .manrope(18, .medium)
         linkLabel.textAlignment = .center
         
         //mainDateLabel
         mainDateLabel.text = "-"
-        mainDateLabel.textColor = .black
+        mainDateLabel.textColor = UIColor(named: "black_white")
         mainDateLabel.font = .manrope(18, .medium)
         mainDateLabel.textAlignment = .center
         
         //mainLinkLabel
         mainLinkLabel.text = "-"
-        mainLinkLabel.textColor = .black
+        mainLinkLabel.textColor = UIColor(named: "black_white")
         mainLinkLabel.font = .manrope(18, .medium)
         mainLinkLabel.textAlignment = .center
         
         //changeDateButton
         changeDateButton.setTitle("Change", for: .normal)
-        changeDateButton.backgroundColor = .white
+        changeDateButton.backgroundColor = UIColor(named: "white_black")
         changeDateButton.setTitleColor(.systemBlue, for: .normal)
         changeDateButton.titleLabel?.font = .manrope(18, .medium)
         changeDateButton.addTarget(self, action: #selector(dateButtonTapped), for: .touchUpInside)
         
         //changeLinkButton
         changeLinkButton.setTitle("Change", for: .normal)
-        changeLinkButton.backgroundColor = .white
+        changeLinkButton.backgroundColor = UIColor(named: "white_black")
         changeLinkButton.setTitleColor(.systemBlue, for: .normal)
         changeLinkButton.titleLabel?.font = .manrope(18, .medium)
         changeLinkButton.addTarget(self, action: #selector(linkButtonTapped), for: .touchUpInside)
         
         //descLabel
         descLabel.text = "Description"
-        descLabel.textColor = .black
+        descLabel.textColor = UIColor(named: "black_white")
         descLabel.textAlignment = .center
         descLabel.font = .manrope(18, .medium)
         
@@ -308,6 +320,8 @@ class AddMovieViewController: UIViewController, NameDelegate, RatingDelegate, Da
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
     }
+    
+    //MARK: - Delegates
     
     func nameDelegate(_ name: String) {
         receivedName = name
@@ -358,6 +372,8 @@ class AddMovieViewController: UIViewController, NameDelegate, RatingDelegate, Da
     @objc private func saveButtonTapped() {
         saveButtonClick()
     }
+    
+    //MARK: - DataSaver
     
     @objc private func saveButtonClick() {
         if isCheckFieldsForEmpty() {

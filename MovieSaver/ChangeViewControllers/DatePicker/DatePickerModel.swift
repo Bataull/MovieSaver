@@ -1,10 +1,14 @@
 import UIKit
 
+//MARK: - Protocol
+
 protocol DatePickerModel: AnyObject {
     func setNavigationController(_ navigationController: UINavigationController?)
     func saveButtonTap()
     var delegate: DateDelegate? { get set }
 }
+
+//MARK: - Default
 
 final class DefaultDatePickerModel: DatePickerModel {
     

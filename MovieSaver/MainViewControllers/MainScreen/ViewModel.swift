@@ -1,9 +1,13 @@
 import UIKit
 
+//MARK: - Protocol
+
 protocol ViewModel: AnyObject {
     func setNavigationController(_ navigationController: UINavigationController?)
     func addNewButtonClick()
 }
+
+//MARK: - Default
 
 final class DefaultViewModel: ViewModel {
     

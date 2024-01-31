@@ -65,7 +65,7 @@ final class MovieInfoTableViewCell: UITableViewCell {
     private func addSetup() {
         
         //contentView
-        contentView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        contentView.backgroundColor = UIColor(named: "bgColor")
         
         //movieImageView
         movieImageView.layer.cornerRadius = 10
@@ -73,7 +73,7 @@ final class MovieInfoTableViewCell: UITableViewCell {
         movieImageView.contentMode = .scaleAspectFill
         
         //mainView
-        mainView.backgroundColor = .white
+        mainView.backgroundColor = UIColor(named: "white_black")
         mainView.layer.cornerRadius = 10
         
         //mainStackView
@@ -88,13 +88,13 @@ final class MovieInfoTableViewCell: UITableViewCell {
         infoStackView.distribution = .fillProportionally
         
         //nameMovieLabel
-        nameMovieeLabel.textColor = .black
+        nameMovieeLabel.textColor = UIColor(named: "black_white")
         nameMovieeLabel.textAlignment = .center
         nameMovieeLabel.font = .manrope(18, .medium)
         nameMovieeLabel.numberOfLines = 3
         
         //ratingMovieLabel
-        ratingMovieLabel.textColor = .black
+        ratingMovieLabel.textColor = UIColor(named: "black_white")
         ratingMovieLabel.textAlignment = .center
         ratingMovieLabel.font = .manrope(18, .medium)
     }

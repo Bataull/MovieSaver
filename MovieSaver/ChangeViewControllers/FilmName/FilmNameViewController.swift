@@ -2,6 +2,7 @@ import UIKit
 
 final class FilmNameViewController: UIViewController{
     
+    //MARK: - Properties
     
     static let identifier = "FilmNameViewController"
     
@@ -12,6 +13,8 @@ final class FilmNameViewController: UIViewController{
     var viewModel: FilmNameModel!
     
     weak var delegate: NameDelegate?
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +29,15 @@ final class FilmNameViewController: UIViewController{
         addSetups()
     }
     
+    //MARK: - AddSubviews
+    
     private func addSubview(){
         view.addSubview(nameLabel)
         view.addSubview(nameTextField)
         view.addSubview(saveButton)
     }
+    
+    //MARK: - Constraints
     
     private func addConstraints() {
         
@@ -58,11 +65,13 @@ final class FilmNameViewController: UIViewController{
         
     }
     
+    //MARK: - Setups
+    
     private func addSetups() {
         
         //nameLabel
         nameLabel.text = "Fill Name"
-        nameLabel.textColor = .black
+        nameLabel.textColor = UIColor(named: "black_white")
         nameLabel.textAlignment = .center
         nameLabel.font = .manrope(24, .medium)
         
@@ -71,11 +80,13 @@ final class FilmNameViewController: UIViewController{
         
         //saveButton
         saveButton.setTitle("Save", for: .normal)
-        saveButton.backgroundColor = .white
+        saveButton.backgroundColor = UIColor(named: "white_black")
         saveButton.setTitleColor(.systemBlue, for: .normal)
         saveButton.titleLabel?.font = .manrope(18, .medium)
         saveButton.addTarget(self, action: #selector(saveButtonTap), for: .touchUpInside)
     }
+    
+    //MARK: - Action
     
     @objc private func saveButtonTap() {
         let name = nameTextField.text ?? ""

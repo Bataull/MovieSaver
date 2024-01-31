@@ -1,8 +1,9 @@
-//
-//  DetailScreenModel.swift
-//  MovieSaver
-//
-//  Created by Антон Батауллин on 26.01.24.
-//
+import UIKit
 
-import Foundation
+protocol DetailScreenModel: AnyObject {
+    
+}
+
+final class DefaultDetailScreenModel: DetailScreenModel {
+    
+}

@@ -1,8 +1,22 @@
-//
-//  ViewModel.swift
-//  MovieSaver
-//
-//  Created by Антон Батауллин on 27.01.24.
-//
+import UIKit
 
-import Foundation
+protocol ViewModel: AnyObject {
+    func setNavigationController(_ navigationController: UINavigationController?)
+    func addNewButtonClick()
+}
+
+final class DefaultViewModel: ViewModel {
+    
+    private var navigationController: UINavigationController?
+    
+    func setNavigationController(_ navigationController: UINavigationController?) {
+        self.navigationController = navigationController
+    }
+    
+    func addNewButtonClick() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let addNewVC = storyboard.instantiateViewController(withIdentifier: AddMovieViewController.identifier) as? AddMovieViewController {
+            navigationController?.pushViewController(addNewVC, animated: true)
+        }
+    }
+}

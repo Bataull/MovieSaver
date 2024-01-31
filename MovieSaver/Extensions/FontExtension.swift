@@ -1,8 +1,11 @@
-//
-//  FontExtension.swift
-//  MovieSaver
-//
-//  Created by Антон Батауллин on 27.01.24.
-//
+import UIKit
 
-import Foundation
+extension UIFont {
+    static func manrope(_ size: CGFloat, _ weight: FontWeight) -> UIFont {
+        if let font = UIFont(name: weight.rawValue, size: size) {
+            return font
+        } else {
+            return UIFont.systemFont(ofSize: size)
+        }
+    }
+}

@@ -9,3 +9,4 @@ enum FontWeight: String {
     case regular = "Manrope-Regular"
     case semiBold = "Manrope-SemiBold"
 }
+

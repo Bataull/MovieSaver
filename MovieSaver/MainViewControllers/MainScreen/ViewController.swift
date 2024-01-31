@@ -85,6 +85,28 @@ final class ViewController: UIViewController, NSFetchedResultsControllerDelegate
     @objc private func addNewButtonClick() {
         viewModel.addNewButtonClick()
     }
+    
+    private func ratingMovieInfo(_ indexPath: IndexPath) -> NSMutableAttributedString {
+        let firstAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .bold)
+        ]
+        let secondAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor(red: 0.592, green: 0.592, blue: 0.592, alpha: 1),
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .light)
+        ]
+        let firstString = NSMutableAttributedString(
+            string: "\(moviesInfo[indexPath.row].rating!)",
+            attributes: firstAttributes
+        )
+        let secondString = NSAttributedString(
+            string: "/10",
+            attributes: secondAttributes
+        )
+        firstString.append(secondString)
+        return firstString
+    }
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -99,16 +121,22 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = mainTableView.dequeueReusableCell(withIdentifier: MovieInfoTableViewCell.identifier, for: indexPath) as? MovieInfoTableViewCell {
+            let movie = moviesInfo[indexPath.row]
+            cell.setInfoMovie(
+                NameMovie: movie.name!,
+                RatingMovie: ratingMovieInfo(indexPath),
+                ImageMovie: UIImage(data: movie.image! as Data)!
+            )
             return cell
         }
         return UITableViewCell()
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let detailScreenVC = storyboard.instantiateViewController(withIdentifier: DetailScreenViewController.identifier) as? DetailScreenViewController {
-//            detailScreenVC.movieInfo = moviesInfo[indexPath.item]
-//            navigationController?.pushViewController(detailScreenVC, animated: true)
-//        }
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let detailScreenVC = storyboard.instantiateViewController(withIdentifier: DetailScreenViewController.identifier) as? DetailScreenViewController {
+            detailScreenVC.movieInfo = moviesInfo[indexPath.item]
+            navigationController?.pushViewController(detailScreenVC, animated: true)
+        }
+    }
 }

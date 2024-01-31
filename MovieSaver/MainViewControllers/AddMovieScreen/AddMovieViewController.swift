@@ -368,7 +368,9 @@ class AddMovieViewController: UIViewController, NameDelegate, RatingDelegate, Da
                       mainLinkLabel.text!,
                       pickedImage ?? UIImage())
             navigationController?.popViewController(animated: true)
-        } 
+        } else {
+            showAllert("Fill all fields")
+        }
     }
     
     private func showAllert(_ msg: String) {
@@ -399,12 +401,12 @@ class AddMovieViewController: UIViewController, NameDelegate, RatingDelegate, Da
             do {
                 let movies = try context.fetch(fetchRequest)
                 if !movies.isEmpty {
-                    print("Данные успешно сохранены в Core Data.")
+                    print("Data Saved")
                 } else {
-                    print("Произошла ошибка при сохранении данных в Core Data.")
+                    print("Data Error")
                 }
             } catch {
-                print("Ошибка при извлечении данных из Core Data: \(error.localizedDescription)")
+                print("Catch Error: \(error.localizedDescription)")
             }
         }
     }
